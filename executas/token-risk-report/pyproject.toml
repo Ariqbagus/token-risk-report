@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tool-dev-token-risk-report"
+version = "0.1.0"
+description = "Executa for the token-risk-report Anna App"
+requires-python = ">=3.10"
+
+[project.scripts]
+"tool-dev-token-risk-report" = "token_risk_report_plugin:main"
+
+[tool.setuptools]
+py-modules = ["token_risk_report_plugin"]

@@ -1,0 +1,147 @@
+:root {
+  --bg: #f6f7f9;
+  --card: #ffffff;
+  --text: #16181d;
+  --muted: #5c6470;
+  --border: #dde1e8;
+  --accent: #4f46e5;
+  --accent-text: #ffffff;
+  --ok: #15803d;
+  --warn: #b45309;
+  --bad: #b91c1c;
+  --unknown: #6b7280;
+}
+:root[data-theme="dark"] {
+  --bg: #101216;
+  --card: #1a1d24;
+  --text: #e8eaef;
+  --muted: #9aa3b2;
+  --border: #2b303c;
+  --accent: #818cf8;
+  --accent-text: #101216;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --bg: #101216;
+    --card: #1a1d24;
+    --text: #e8eaef;
+    --muted: #9aa3b2;
+    --border: #2b303c;
+    --accent: #818cf8;
+    --accent-text: #101216;
+  }
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 20px;
+  font: 15px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+header, section.card, footer { max-width: 860px; margin: 0 auto 16px; }
+h1 { font-size: 24px; margin: 0 0 6px; }
+h2 { font-size: 19px; margin: 0 0 4px; }
+h3 { font-size: 15px; margin: 18px 0 8px; }
+.muted { color: var(--muted); }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; word-break: break-all; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+label { display: block; font-size: 13px; margin-bottom: 6px; }
+input[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 13px;
+}
+.row { display: flex; gap: 10px; align-items: center; margin-top: 12px; flex-wrap: wrap; }
+.row label { margin: 0; }
+select {
+  padding: 9px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+}
+button {
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--accent-text);
+  font-weight: 600;
+  cursor: pointer;
+}
+button:disabled { opacity: 0.55; cursor: wait; }
+.status { margin: 12px 0 0; min-height: 1.4em; }
+.status[data-kind="error"] { color: var(--bad); font-weight: 600; }
+
+.score-row { display: flex; gap: 20px; flex-wrap: wrap; }
+.score-box {
+  text-align: center;
+  min-width: 130px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.score-num { font-size: 44px; font-weight: 800; line-height: 1; }
+.band-chip {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--unknown);
+}
+.band-chip[data-band="LOW"] { background: var(--ok); }
+.band-chip[data-band="MODERATE"] { background: var(--warn); }
+.band-chip[data-band="HIGH"] { background: #c2410c; }
+.band-chip[data-band="EXTREME"] { background: var(--bad); }
+.score-side { flex: 1; min-width: 240px; }
+.fact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 8px 16px;
+  margin-top: 10px;
+}
+.fact-grid span { display: block; font-size: 12px; }
+.fact-grid strong { font-size: 15px; }
+
+.checks { list-style: none; margin: 0; padding: 0; }
+.check { display: flex; gap: 12px; padding: 9px 0; border-top: 1px solid var(--border); }
+.check p { margin: 2px 0 0; color: var(--muted); font-size: 13.5px; }
+.check .val { color: var(--muted); font-weight: 600; }
+.chip {
+  flex: none;
+  align-self: flex-start;
+  min-width: 74px;
+  text-align: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--unknown);
+}
+.chip[data-status="ok"] { background: var(--ok); }
+.chip[data-status="warn"] { background: var(--warn); }
+.chip[data-status="bad"] { background: var(--bad); }
+
+.report h2 { margin-top: 16px; }
+.report h2:first-child { margin-top: 0; }
+.report h3 { margin-top: 14px; }
+.report ul { margin: 6px 0 6px 18px; padding: 0; }
+.report p { margin: 6px 0; }
+footer p { font-size: 12.5px; }
